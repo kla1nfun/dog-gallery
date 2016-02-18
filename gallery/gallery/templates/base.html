@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	    <title> Gallery - {% block title %}{% endblock %}</title>
+		<style type="text/css">
+		    body { margin: 30px; font-family: sans-serif; background-image: url('/media/photos/sobaka.jpg');}
+            th {width: 100px; text-align: left;}
+            p {font-size: 15px;}
+			h1 {background: #FFDAB9; padding: 20 px; }
+			h2 {background: #FAF0E6; padding: 10px 20 px; }
+			h3 {background: #FAEBD7; padding: 5px 20 px; }
+			table {width: 100%;
+			table th {text-align: left;}
+		</style>
+	</head>
+	<body>
+	    <h1> Галерея</h1>
+
+		{% block content %}{% endblock %}
+
+	</body>
+</html>

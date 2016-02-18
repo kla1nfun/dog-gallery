@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+        {% block title %}{{ object.name }}{% endblock %}
+		{% block content %}
+    <p><a href="{% url item_list %}">&laquo; Вернуться к списку альбомов</a></p>
+
+    <h2>{{ object.name }}</h2>
+    <p>{{ object.description }}</p>
+    <h3>Фотографии</h3>
+    <table>
+        <tr>
+            <th>Название</th>
+            <th>Уменьшенная копия</th>
+            <th>Описание</th>
+        </tr>
+        {% for photo in object.photo_set.all %}
+        <tr>
+            <td><i>{{ photo.title }}</i></td>
+            <td>
+                <a href="{{ photo.get_absolute_url }}">
+                    <img src="{{ photo.image.thumb_url }}" />
+                </a>
+            </td>
+            <td>{{ photo.caption }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+		{% block content %}
+		<h2>Добро пожаловать в Галерею! </h2>
+		<p> Здесь вы найдёте множество интересных альбомов с красивыми фотографиями.</p>
+		<h3> Взгляните!</h3>
+		<table>
+		    <tr>
+			{% for items in item_list|slice:":3" %}
+			    <td>
+				    <a href="{{ items.get_absolute_url }}"><b>{{ items.name }}</b><br />
+					{% if items.photo_set.count %}
+					    <img src="{{items.photo_set.all.0.image.thumb_url }}" />
+					{% else %}
+					    <span> К сожалению, здесь ещё нет фотографий </span>
+					{% endif %}
+					</a>
+				</td>
+			{% endfor %}
+			</tr>
+		</table>
+		<p><a href="{% url item_list %}"> Посмотреть все альбомы &raquo;</a></p>
+
+		{% endblock %}

@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib import admin
 from gallery.items.fields import ThumbnailImageField
-from PIL import Image
 
 class Item(models.Model):
     name = models.CharField(max_length=250)
@@ -15,7 +14,7 @@ class Item(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return unicode('items_detail', None, {'object_id': self.id})
+        return ('item_detail', None, {'object_id': self.id})
 
 class Photo(models.Model):
     item = models.ForeignKey(Item)
@@ -31,7 +30,7 @@ class Photo(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return unicode('photos_detail', None, {'object_id': self.id})
+        return ('photo_detail', None, {'object_id': self.id})
 
 class PhotoInline(admin.StackedInline):
     model = Photo
